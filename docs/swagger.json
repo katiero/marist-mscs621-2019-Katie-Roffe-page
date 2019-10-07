@@ -2,8 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Sample Application",
-    "version": "0.1.",
-    "description": "provides a REST API for the Data Model"
+    "version": "0.1.0"
   },
   "paths": {
     "/": {
@@ -154,6 +153,35 @@
         },
         "summary": "Purchase data",
         "operationId": "purchase_data"
+      }
+    },
+    "/functions": {
+      "summary": "use api_key as a Basic authentication ",
+      "description": "api_key = str(base64.b64encode(str.encode(params['api_key'])), \"utf-8\") # python 3.x",
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "api_key",
+            "schema": {
+              "type": "text"
+            },
+            "required": true,
+            "description": "api key for basic authentication"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "summary": "Connect to functions endpoint",
+        "operationId": "get_data"
       }
     }
   }
